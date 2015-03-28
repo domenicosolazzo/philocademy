@@ -27,9 +27,9 @@
   "main": "./index.js",
   "scripts": {
     "prestart": "npm build",
-    "start": "node bin/www",
+    "start": "node www/main",
     "build": "webpack --progress --colors -p",
-    "server": "node bin/www",
+    "server": "node main/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
