@@ -1,32 +1,34 @@
 var webpack = require('webpack');
 
+var definePlugin = new webpack.DefinePlugin({
+  __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
+  __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false'))
+});
+
+var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
+
+
 module.exports = {
-  devtool: 'eval',
   cache: true,
   stats: {
     colors: true,
     reasons: true
   },
   entry: {
-    main:  ['webpack/hot/dev-server', './src/root']
-  },
-  resolve: {
-    root: __dirname + '/src',
-    extensions: ['', '.js', '.jsx']
+    main:  './src/index.jsx'
   },
   output: {
-    path: 'public/build',
-    publicPath: 'http://localhost:9090/',
-    filename: 'bundle.js'
+    path: 'public/js',
+    filename: '[name].js'
   },
   module: {
     loaders: [
-      {test: /\.jsx$/, loader: 'babel-loader'},
-      {test: /\.js$/ , loader: 'babel-loader'}
+      {test: /\.jsx$/, loader: 'jsx-loader?harmony'},
+      {test: /\.js$/ , loader: 'jsx-loader?harmony'}
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    definePlugin,
+    commonsPlugin
   ]
 };
