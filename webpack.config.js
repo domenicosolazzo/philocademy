@@ -5,7 +5,7 @@ var definePlugin = new webpack.DefinePlugin({
   __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false'))
 });
 
-var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
+var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common','common.js', Infinity);
 
 
 module.exports = {

@@ -2,7 +2,7 @@
 var React         = require('react');
 var HomeComponent = require('./components/home/home.jsx');
 
-React.renderComponent(
+React.render(
   <HomeComponent/>,
   document.getElementById("react-container")
 );
