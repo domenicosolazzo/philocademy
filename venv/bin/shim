@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+export NODE_PATH=/Volumes/MacData/Development/git/philocademy/venv/lib/node_modules
+export NPM_CONFIG_PREFIX=/Volumes/MacData/Development/git/philocademy/venv
+export npm_config_prefix=/Volumes/MacData/Development/git/philocademy/venv
+exec venv/bin/node "$@"
